@@ -52,17 +52,17 @@
     },
     {
         "name": "symfony/http-foundation",
-        "version": "v3.4.11",
-        "version_normalized": "3.4.11.0",
+        "version": "v3.4.12",
+        "version_normalized": "3.4.12.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/http-foundation.git",
-            "reference": "a7b5fc605d1c215cea1122359044b1e682eb70c0"
+            "reference": "1c28679fcbb0d9b35e4fd49fbb74d2ca4ea17bce"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/http-foundation/zipball/a7b5fc605d1c215cea1122359044b1e682eb70c0",
-            "reference": "a7b5fc605d1c215cea1122359044b1e682eb70c0",
+            "url": "https://api.github.com/repos/symfony/http-foundation/zipball/1c28679fcbb0d9b35e4fd49fbb74d2ca4ea17bce",
+            "reference": "1c28679fcbb0d9b35e4fd49fbb74d2ca4ea17bce",
             "shasum": ""
         },
         "require": {
@@ -73,7 +73,7 @@
         "require-dev": {
             "symfony/expression-language": "~2.8|~3.0|~4.0"
         },
-        "time": "2018-05-25T11:07:31+00:00",
+        "time": "2018-06-21T11:10:19+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -230,17 +230,17 @@
     },
     {
         "name": "symfony/routing",
-        "version": "v3.4.11",
-        "version_normalized": "3.4.11.0",
+        "version": "v3.4.12",
+        "version_normalized": "3.4.12.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/routing.git",
-            "reference": "e382da877f5304aabc12ec3073eec430670c8296"
+            "reference": "6b9fef5343828e542db17e2519722ef08992f2c1"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/routing/zipball/e382da877f5304aabc12ec3073eec430670c8296",
-            "reference": "e382da877f5304aabc12ec3073eec430670c8296",
+            "url": "https://api.github.com/repos/symfony/routing/zipball/6b9fef5343828e542db17e2519722ef08992f2c1",
+            "reference": "6b9fef5343828e542db17e2519722ef08992f2c1",
             "shasum": ""
         },
         "require": {
@@ -253,7 +253,6 @@
         },
         "require-dev": {
             "doctrine/annotations": "~1.0",
-            "doctrine/common": "~2.2",
             "psr/log": "~1.0",
             "symfony/config": "^3.3.1|~4.0",
             "symfony/dependency-injection": "~3.3|~4.0",
@@ -269,7 +268,7 @@
             "symfony/http-foundation": "For using a Symfony Request object",
             "symfony/yaml": "For using the YAML loader"
         },
-        "time": "2018-05-16T12:49:49+00:00",
+        "time": "2018-06-19T20:52:10+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {

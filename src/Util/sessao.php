@@ -37,4 +37,8 @@ class Sessao {
         return false;
         
     }
+    
+    function getAll(){
+        return $_SESSION['ez'];
+    }
 }

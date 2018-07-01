@@ -1,0 +1,55 @@
+{% extends "templates/painel.twig"%}
+{% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" 
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" 
+    integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="/css/perfil.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/cadastro.css" rel="stylesheet" type="text/css"/>
+{% endblock %}
+{% block conteudo %} 
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card">
+                <img src="imagens/user.png" alt="John" style="width:25%">
+                <h2>Nome: {{ dados.nome }}</h2>
+                <h2>Sobrenome: {{ dados.sobrenome }}</h2>
+                <h2>ID: {{ dados.id }}</h2>
+                <h2>Username: {{ dados.username }}</h2>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <form id="formPerfil" action="/formPerfil" method="POST">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="form-control" name="nome">
+                </div>
+                <div class="form-group">
+                    <label for="sobrenome">Sobrenome</label>
+                    <input type="text" class="form-control" name="sobrenome">
+                </div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" name="username">
+                </div>
+                <div class="form-group">
+                    <label for="senha">Senha *</label>
+                    <input type="password" class="form-control" name="senha" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmaSenha">Confirma Senha *</label>
+                    <input type="password" class="form-control" name="confirmaSenha" required>
+                </div>
+                <button type="submit" class="btn btn-success col-sm-3">Submit</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

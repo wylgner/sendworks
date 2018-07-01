@@ -56,5 +56,11 @@ class Usuario {
     function setSenha($senha) {
         $this->senha = $senha;
     }
+    
+    function setId($id) {
+        $this->id = $id;
+    }
+
+
 
 }

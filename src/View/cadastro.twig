@@ -1,11 +1,37 @@
-{% extends "master.twig"%}
-{% block titulo %}Crie sua conta no EZ CODE{% endblock %}
+{% extends "/paginas/painel/principal.twig"%}
 {% block head %}
     {{ parent() }}
     <link href="/css/cadastro.css" rel="stylesheet" type="text/css"/>
 {% endblock %}
+{% block menu %}
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> 
+                </button>
+                <a class="navbar-brand" href="/logado">
+                    <img src="imagens/ez_icone.png" width="30" height="30" alt="">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class=""><a href="#">Perfil</a></li>
+                    <li><a href="#">Problemas</a></li>
+                    <li><a href="#">Trabalhos</a></li>  
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li><a href="/logoff"><span class="glyphicon glyphicon-log-in"></span> Logoff</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
 {% block conteudo %}
-   
+
     <div class="caixa col-12 col-sm-12 col-xl-10 col-lg-12 col-xs-8">
         <div class="">
             <form  class="form-group  center-block text-center" id="formCadastro" action="/cadastro" method="POST">

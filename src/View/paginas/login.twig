@@ -1,4 +1,4 @@
-{% extends "master.twig"%}
+{% extends "/templates/login.twig"%}
 {% block titulo %}EZ CODE{% endblock %}
 {% block head %}
     {{ parent() }}
@@ -12,7 +12,6 @@
                 <div class="">                    
                     <div class="input-group-prepend input-group col-8 col-sm-8 col-xl-8 col-lg-6 col-xs-6">
                         <input type="text" name="username" class="inputAnimado" placeholder="Username" required/>
-
                     </div>
                 </div>
                 <div class="">                   
@@ -39,13 +38,8 @@
                 </div>
             </form>
             <div id="div_retorno">
-                
+
             </div>
         </div>
     </div>
-
-
-
-
-
 {% endblock %}

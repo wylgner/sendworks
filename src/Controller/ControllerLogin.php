@@ -24,14 +24,25 @@ class ControllerLogin {
         $this->sessao = $sessao;
     }
 
+    public function verificaLogin() {
+        if (!$this->sessao->existe('username')) {
+            $destino = '/login';
+            $redirecionar = new RedirectResponse($destino);
+            $redirecionar->send();
+        }
+    }
+
     public function show() {
-        return $this->response->setContent($this->twig->render('login.twig'));
+        return $this->response->setContent($this->twig->render('paginas/login.twig'));
     }
 
     public function showLog() {
-        if ($this->sessao->existe('username'))
-            return $this->response->setContent($this->twig->render('index.twig'));
-        else {
+        $this->verificaLogin();
+        if ($this->sessao->existe('username')) {
+            $modeloUser = new MUsuario();
+            $dados = $modeloUser->getById($this->sessao->get('id'));
+            return $this->response->setContent($this->twig->render('paginas/painel/principal.twig', ['dados' => $dados]));
+        } else {
             $destino = '/login';
             $redirecionar = new RedirectResponse($destino);
             $redirecionar->send();
@@ -39,10 +50,9 @@ class ControllerLogin {
     }
 
     public function logoff() {
-        print_r($this->sessao->get('id_usuario'));
         $this->sessao->del();
-      //  $redirecionar = new RedirectResponse('/login');
-        //$redirecionar->send();
+        $redirecionar = new RedirectResponse('/login');
+        $redirecionar->send();
     }
 
     public function login() {
@@ -55,19 +65,20 @@ class ControllerLogin {
         $senha = $this->contexto->get('senha');
         $User = new Usuario();
         $User->setUsername($username);
-        $senha += 'ERTYUI';
         $senha = md5($senha);
         $User->setSenha($senha);
         $mUser = new MUsuario();
         //$result = $mUser->ler($User);
-            $t1 = $mUser->ler($User);
+        $t1 = $mUser->ler($User);
         if ($t1) {
             $t2 = $mUser->pegarId($username);
             $this->sessao->add('username', $User->getUsername());
-             $this->sessao->add('id_usuario', $t2['id']);
+            $this->sessao->add('id', $t2['id']);
+            $this->sessao->add('nome', $t2['nome']);
+            $this->sessao->add('sobrenome', $t2['sobrenome']);
             // $this->sessao->add('senha', $User->getSenha());
             // echo 'logado';
-            echo '<script>location.href = "logado"</script>';
+            echo '<script>location.href = "principal"</script>';
 //            $response = new RedirectResponse('//logado');
 //            $response->send();
         } else {

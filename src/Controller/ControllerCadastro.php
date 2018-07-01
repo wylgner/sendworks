@@ -51,8 +51,8 @@ class ControllerCadastro {
         $username = $this->contexto->get('username');
         $senha = $this->contexto->get('senha');
         $senha2 = $this->contexto->get('confirmarsenha');
-        
-        
+
+
         if ($senha == $senha2) {
             $user = new Usuario();
             $user->setNome($nome);
@@ -67,10 +67,50 @@ class ControllerCadastro {
                 echo '<script>location.href = "/login"</script>';
             }
         } else {
-           echo '<script>alert("Senhas não estão iguais!");</script>';
+            echo '<script>alert("Senhas não estão iguais!");</script>';
         }
 
         // depois de validado
+    }
+
+    public function formPerfil() {
+        $modeloUser = new MUsuario();
+
+        if ($this->contexto->get('nome')) {
+            $nome = $this->contexto->get('nome');
+        } else {
+            $nome = $this->sessao->get('nome');
+        }
+
+        if ($this->contexto->get('sobrenome')) {
+            $sobrenome = $this->contexto->get('sobrenome');
+        } else {
+            $sobrenome = $this->sessao->get('sobrenome');
+        }
+
+        if ($this->contexto->get('username')) {
+            $username = $this->contexto->get('username');
+        } else {
+            $username = $this->sessao->get('username');
+        }
+
+        $senha = $this->contexto->get('senha');
+        $confirmaSenha = $this->contexto->get('confirmaSenha');
+
+        if ($senha == $confirmaSenha) {
+            $user = new Usuario();
+            $user->setId($this->sessao->get('id'));
+            $user->setNome($nome);
+            $user->setSobrenome($sobrenome);
+            $user->setUsername($username);
+            $user->setSenha(md5($senha));
+
+            if ($modeloUser->alterar($user)) {
+                echo '<script>location.href = "/logado"</script>';
+            }
+        } else {
+            echo '<script>alert("Senhas não estão iguais!");</script>';
+        }
     }
 
 }

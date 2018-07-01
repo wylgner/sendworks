@@ -61,8 +61,8 @@ class MUsuario {
             $p_sql->bindValue(':sobrenome', $user->getSobrenome());
             $p_sql->bindValue(':username', $user->getUsername());
             $p_sql->bindValue(':senha', $user->getSenha());
-            $ps->execute();
-            return $ps->fetchAll(PDO::FETCH_OBJ);
+            $p_sql->execute();
+            return TRUE;
         } catch (Exception $ex) {
             return 'Erro na conexão:' . $ex;
         }
@@ -105,9 +105,21 @@ class MUsuario {
 
     function pegarId($username) {
         try {
-            $sql = "select id from usuario where username = :username";
+            $sql = "select * from usuario where username = :username";
             $p_sql = (Conexao::getInstancia()->prepare($sql));
             $p_sql->bindValue(':username', $username);
+            $p_sql->execute();
+            return $p_sql->fetch();
+        } catch (Exception $ex) {
+            return 'erro em pegar' . $ex;
+        }
+    }
+
+    function getById($id) {
+        try {
+            $sql = "select * from usuario where id = :id";
+            $p_sql = (Conexao::getInstancia()->prepare($sql));
+            $p_sql->bindValue(':id', $id);
             $p_sql->execute();
             return $p_sql->fetch();
         } catch (Exception $ex) {

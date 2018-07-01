@@ -57,7 +57,7 @@ class ControllerProblema {
         $mProblema = new MProblema();
 
         if ($mProblema->cadastrar($prob)) {
-           return $this->response->setContent($this->twig->render('index.twig'));
+           return $this->response->setContent($this->twig->render('paginas/painel/principal.twig'));
         }
     }
 

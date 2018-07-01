@@ -6,7 +6,7 @@ $(document).ready(function () {
             url: '/cadastro',
             data: $("#formCadastro").serializeArray(),
             success: function (dados) {
-                 //window.location = '/logado';
+                //window.location = '/logado';
             },
             beforeSend: function () {
                 $("#processando").css({display: "block"});
@@ -25,6 +25,7 @@ $(document).ready(function () {
         });
     });
 });
+
 $(document).ready(function () {
     $('#formLogin').submit(function (e) {
         e.preventDefault();
@@ -33,10 +34,10 @@ $(document).ready(function () {
             url: '/acLogar',
             data: $("#formLogin").serializeArray(),
             success: function (dados)
-            { 
-              
+            {
+
                 $("#div_retorno").html(dados);
-            
+
             },
             error: function () {
                 $("#div_retorno").html("Erro em chamar a função.");
