@@ -40,13 +40,13 @@ class MUsuario {
         }
     }
 
-    function excluir(Usuario $user) {
+    function excluir($idUser) {
         try {
-            $sql = 'delete usuario where id = :id';
+            $sql = 'delete from usuario where id = :id';
             $p_sql = Conexao::getInstancia()->prepare($sql);
-            $p_sql->bindValue(':id', $user->getId());
-            $ps->execute();
-            return $ps->fetchAll(PDO::FETCH_OBJ);
+            $p_sql->bindValue(':id', $idUser);
+            $p_sql->execute();
+            return TRUE;
         } catch (Exception $ex) {
             return 'Erro na conexão:' . $ex;
         }

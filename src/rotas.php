@@ -18,13 +18,17 @@ $rotas->add('acProb', new Route('/acProb', array('_controller' => 'Sendworks\Con
 $rotas->add('showProb', new Route('/showProb', array('_controller' => 'Sendworks\Controller\ControllerProblema', 'method' => 'showProb')));
 $rotas->add('index', new Route('/', array('_controller' => 'Sendworks\Controller\ControllerLogin', 'method' => 'show')));
 
-
 $rotas->add('Principal', new Route('/principal', array('_controller' => 'Sendworks\Controller\ControllerLogin', 'method' => 'showLog')));
 $rotas->add('Tratamento Form Perfil', new Route('/formPerfil', array('_controller' => 'Sendworks\Controller\ControllerCadastro', 'method' => 'formPerfil')));
 // Usuários
 $rotas->add('Usuarios', new Route('/usuarios', array('_controller' => 'Sendworks\Controller\ControllerUsuario', 'method' => 'show')));
 $rotas->add('Usuarios Adicionar', new Route('/usuarios/usuarios_add', array('_controller' => 'Sendworks\Controller\ControllerUsuario', 'method' => 'usuarios_add')));
 $rotas->add('Usuarios Adicionar Formulario', new Route('/formUsuariosAdd', array('_controller' => 'Sendworks\Controller\ControllerUsuario', 'method' => 'formUsuariosAdd')));
-$rotas->add('Usuarios Editar', new Route('/usuarios/usuarios_edit/{suffix}', array('_controller' => 'Sendworks\Controller\ControllerUsuario', 'method' => 'usuarios_edit', 'suffix' => '3')));
+$rotas->add('Usuarios Editar', new Route('/usuarios/usuarios_edit/{page}', array('_controller' => 'Sendworks\Controller\ControllerUsuario', 'method' => 'usuarios_edit', 'page' => 1)));
+$rotas->add('Usuarios Editar Formulario', new Route('/formUsuariosEdit', array('_controller' => 'Sendworks\Controller\ControllerUsuario', 'method' => 'formUsuariosEdit')));
+$rotas->add('Usuarios Excluir', new Route('/usuarios/usuarios_excluir/{page}', array('_controller' => 'Sendworks\Controller\ControllerUsuario', 'method' => 'usuarios_excluir', 'page' => 1)));
+
+// Problemas
+
 
 return $rotas;
