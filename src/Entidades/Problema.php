@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Sendworks\Entidades;
 
 /**
@@ -9,59 +8,68 @@ namespace Sendworks\Entidades;
  * @author wylgner
  */
 class Problema {
-   private $titulo;
-   private $entrada;
-   private $saida;
-   private $enunciado;
-   private $id_usuario;
-   
-   function __construct($titulo, $entrada, $saida, $enunciado) {
-       $this->titulo = $titulo;
-       $this->entrada = $entrada;
-       $this->saida = $saida;
-       $this->enunciado = $enunciado;
-      
-   }
-   function getTitulo() {
-       return $this->titulo;
-   }
 
-   function getEntrada() {
-       return $this->entrada;
-   }
+    private $id;
+    private $titulo;
+    private $entrada;
+    private $saida;
+    private $enunciado;
+    private $id_usuario;
 
-   function getSaida() {
-       return $this->saida;
-   }
+    function __construct($id, $titulo, $entrada, $saida, $enunciado) {
+        $this->titulo = $titulo;
+        $this->entrada = $entrada;
+        $this->saida = $saida;
+        $this->enunciado = $enunciado;
+        $this->id = $id;
+    }
+    function getId() {
+        return $this->id;
+    }
 
-   function getEnunciado() {
-       return $this->enunciado;
-   }
+    function setId($id) {
+        $this->id = $id;
+    }
 
-   function setTitulo($titulo) {
-       $this->titulo = $titulo;
-   }
+    
+    function getTitulo() {
+        return $this->titulo;
+    }
 
-   function setEntrada($entrada) {
-       $this->entrada = $entrada;
-   }
+    function getEntrada() {
+        return $this->entrada;
+    }
 
-   function setSaida($saida) {
-       $this->saida = $saida;
-   }
+    function getSaida() {
+        return $this->saida;
+    }
 
-   function setEnunciado($enunciado) {
-       $this->enunciado = $enunciado;
-   }
-   function getId_usuario() {
-       return $this->id_usuario;
-   }
+    function getEnunciado() {
+        return $this->enunciado;
+    }
 
-   function setId_usuario($id_usuario) {
-       $this->id_usuario = $id_usuario;
-   }
+    function setTitulo($titulo) {
+        $this->titulo = $titulo;
+    }
 
+    function setEntrada($entrada) {
+        $this->entrada = $entrada;
+    }
 
+    function setSaida($saida) {
+        $this->saida = $saida;
+    }
 
+    function setEnunciado($enunciado) {
+        $this->enunciado = $enunciado;
+    }
+
+    function getId_usuario() {
+        return $this->id_usuario;
+    }
+
+    function setId_usuario($id_usuario) {
+        $this->id_usuario = $id_usuario;
+    }
 
 }

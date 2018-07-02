@@ -106,7 +106,7 @@ class ControllerCadastro {
             $user->setSenha(md5($senha));
 
             if ($modeloUser->alterar($user)) {
-                echo '<script>location.href = "/logado"</script>';
+                echo '<script>location.href = "/principal"</script>';
             }
         } else {
             echo '<script>alert("Senhas não estão iguais!");</script>';

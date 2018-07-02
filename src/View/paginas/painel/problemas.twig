@@ -23,7 +23,7 @@
     </div>
 
     <div class="col-xs-8">
-        <a href="usuarios/usuarios_add" type="button" class="btn btn-success" style="margin-bottom: 20px"><i class="fas fa-plus"></i> Adicionar</a>
+        <a href="problemas/problemas_add" type="button" class="btn btn-success" style="margin-bottom: 0px"><i class="fas fa-plus"></i> Adicionar</a>
         <table class="table">
             <thead>
                 <tr>
@@ -36,13 +36,14 @@
                 </tr>
             </thead>
             <tbody>
-                {% for usuario in usuarios %}
+                {% for problema in problemas %}
                     <tr>
-                        <td><a href="usuarios/usuarios_edit/{{ usuario.id }}"><i class="fas fa-cogs"></i><span style="font-size: 16px; margin-left: 10px">Gerenciar</span></a></td>
-                        <td>{{ usuario.id }}</td>
-                        <td>{{ usuario.nome }}</td>
-                        <td>{{ usuario.sobrenome }}</td>
-                        <td>{{ usuario.username }}</td>
+                        <td><a href="problemas/problemas_edit/{{ problema.id }}"><i class="fas fa-cogs"></i><span style="font-size: 10px; margin-left: 10px">Gerenciar</span></a></td>
+                        <td>{{ problema.id }}</td>
+                        <td>{{ problema.titulo }}</td>
+                        <td>{{ problema.entrada }}</td>
+                        <td>{{ problema.saida }}</td>
+                        <td>{{ problema.enunciado }}</td>
                     </tr>
                 {%endfor%} 
             </tbody>

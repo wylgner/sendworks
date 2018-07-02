@@ -1,0 +1,51 @@
+{% extends "templates/painel.twig"%}
+{% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" 
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" 
+    integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="/css/perfil.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/cadastro.css" rel="stylesheet" type="text/css"/>
+{% endblock %}
+{% block conteudo %} 
+    <div class="row">
+        <div class="col-xs-2">
+
+        </div>
+        <div class="col-sm-4">
+            <form id="formPerfil" action="/formProblemasEdit" method="POST">
+                <div class="form-group">
+                    <label for="nome">ID</label>
+                    <input type="text" class="form-control" value="{{ problemas['id'] }}" disabled>
+                    <input type="hidden" class="form-control" name="idUser" value="{{ problemas['id'] }}">
+                </div>
+                <div class="form-group">
+                    <label for="titulo">Título</label>
+                    <input type="text" class="form-control" name="titulo" value="{{ problemas['titulo'] }}">
+                </div>
+                <div class="form-group">
+                    <label for="entrada">Entrada</label>
+                    <input type="text" class="form-control" name="entrada" value="{{ problemas['entrada'] }}">
+                </div>
+                <div class="form-group">
+                    <label for="saida">Saida</label>
+                    <input type="text" class="form-control" name="saida" value="{{ problemas['saida'] }}">
+                </div>
+                <div class="form-group">
+                    <label for="enunciado">Enunciado</label>
+                    <input type="text" class="form-control" name="enunciado" value="{{ problemas['enunciado'] }}">
+                </div>
+                <button type="submit" class="btn btn-success col-sm-3">Submit</button>
+                <a href="/problemas/problemas_excluir/{{ problemas['id'] }}" class="btn btn-danger col-sm-3" style="margin-left: 30px">Excluir</a>
+            </form>
+        </div>
+    </div>
+{% endblock %}

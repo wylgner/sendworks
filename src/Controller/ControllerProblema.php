@@ -25,22 +25,23 @@ class ControllerProblema {
     }
 
     public function show() {
-        //if (!$this->sessao->existe('Usuario'))
-        return $this->response->setContent($this->twig->render('cadastroProb.twig'));
-        // else {
-        //     $destino = '/login';
-        //    $redirecionar = new RedirectResponse($destino);
-        //    $redirecionar->send();
-        // }
+        $modeloProb = new MProblema();
+
+        $problemas = $modeloProb->listarProblemas();
+
+        return $this->response->setContent($this->twig->render('/paginas/painel/problemas.twig', ['problemas' => $problemas]));
     }
 
-    public function showProb(){
-        $mProblema = new MProblema();
-        $dados = $mProblema->listarProblemas();
-        return $this->response->setContent($this->twig->render('problemas.twig',['dados' => $dados]));
+    public function showProb() {
+        
     }
 
-    public function cadastro() {
+    public function formProblemaAdd() {
+
+        return $this->response->setContent($this->twig->render('paginas/painel/problemas_add.twig'));
+    }
+
+    public function problemas_add() {
         //$cl = new ControllerLogin();
         // $cl->verifica();
 
@@ -48,16 +49,68 @@ class ControllerProblema {
         $entrada = $this->contexto->get('entrada');
         $saida = $this->contexto->get('saida');
         $enunciado = $this->contexto->get('enunciado');
-       
+
         // depois de validado
 
-        $prob = new Problema($titulo,$entrada,$saida,$enunciado, $this->sessao->get('id_usuario'));
-        
-        
+        $prob = new Problema($titulo, $entrada, $saida, $enunciado, $this->sessao->get('id_usuario'));
+
+
         $mProblema = new MProblema();
 
         if ($mProblema->cadastrar($prob)) {
-           return $this->response->setContent($this->twig->render('paginas/painel/principal.twig'));
+            return $this->response->setContent($this->twig->render('paginas/painel/principal.twig'));
+        }
+    }
+
+    public function problemas_excluir() {
+        $uri_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $uri_segments = explode('/', $uri_path);
+        $idUser = $uri_segments[3];
+        $modeloProb = new MProblema();
+        if ($modeloProb->excluir($idUser)) {
+            $destino = '/problemas';
+            $redirecionar = new RedirectResponse($destino);
+            $redirecionar->send();
+        } else {
+            echo "<script>alert('Não deu certo!');</script>";
+            $destino = '/problemas';
+            $redirecionar = new RedirectResponse($destino);
+            $redirecionar->send();
+        }
+    }
+
+    public function problema_edit() {
+        $uri_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $uri_segments = explode('/', $uri_path);
+        $idProb = $uri_segments[3];
+        $modeloProb = new MProblema();
+        $dadosProb = $modeloProb->getById($idProb);
+        if ($dadosProb) {
+            return $this->response->setContent($this->twig->render('paginas/painel/problemas_edit.twig', ['problemas' => $dadosProb]));
+        } else {
+            $destino = '/problemas';
+            $redirecionar = new RedirectResponse($destino);
+            $redirecionar->send();
+        }
+    }
+
+    public function formProblemasEdit() {
+        $modeloProb = new MProblema();
+
+        $idUser = $this->contexto->get('idUser');
+        $titulo = $this->contexto->get('titulo');
+        $entrada = $this->contexto->get('entrada');
+        $saida = $this->contexto->get('saida');
+        $enunciado = $this->contexto->get('enunciado');
+        if ($titulo != NULL && $entrada != NULL && $saida != NULL && $enunciado != NULL) {
+            $prob = new Problema($idUser, $titulo, $entrada, $saida, $enunciado);
+
+
+            if ($modeloProb->alterar($prob)) {
+                echo '<script>location.href = "/problemas"</script>';
+            }
+        } else {
+            echo '<script>alert("Preencha todos os dados!");</script>';
         }
     }
 

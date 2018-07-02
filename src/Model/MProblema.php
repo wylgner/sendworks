@@ -50,13 +50,13 @@ class MProblema {
         }
     }
 
-    function excluir(Problema $prob) {
+    function excluir($prob) {
         try {
-            $sql = 'delete problema where id = :id';
+            $sql = 'delete from problema where id = :id';
             $p_sql = Conexao::getInstancia()->prepare($sql);
-            $p_sql->bindValue(':id', $prob->getId());
-            $ps->execute();
-            return $ps->fetchAll(PDO::FETCH_OBJ);
+            $p_sql->bindValue(':id', $prob);
+            $p_sql->execute();
+            return TRUE;
         } catch (Exception $ex) {
             return 'Erro na conexão:' . $ex;
         }
@@ -71,12 +71,22 @@ class MProblema {
             $p_sql->bindValue(':entrada', $prob->getEntrada());
             $p_sql->bindValue(':saida', $prob->getSaida());
             $p_sql->bindValue(':enunciado', $prob->getEnunciado());
-            $ps->execute();
-            return $ps->fetchAll(PDO::FETCH_OBJ);
-        } catch (Exception $ex) {
+            $p_sql->execute();
+            return TRUE;
+            } catch (Exception $ex) {
             return 'Erro na conexão:' . $ex;
         }
     }
-
+     function getById($id) {
+        try {
+            $sql = "select * from problema where id = :id";
+            $p_sql = (Conexao::getInstancia()->prepare($sql));
+            $p_sql->bindValue(':id', $id);
+            $p_sql->execute();
+            return $p_sql->fetch();
+        } catch (Exception $ex) {
+            return 'erro em pegar' . $ex;
+        }
+    }
 
 }
