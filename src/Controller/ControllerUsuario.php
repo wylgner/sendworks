@@ -93,7 +93,6 @@ class ControllerUsuario {
                 $user->setSobrenome($sobrenome);
                 $user->setUsername($username);
                 $user->setSenha(md5($senha));
-
                 if ($modeloUser->cadastrar($user)) {
                     echo '<script>location.href = "/usuarios"</script>';
                 }

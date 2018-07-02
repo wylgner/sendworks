@@ -61,6 +61,7 @@ class ControllerCadastro {
             $senha += 'ERTYUI';
             $senha = md5($senha);
             $user->setSenha($senha);
+            $user->setCargo(10);
             $modeloUser = new MUsuario();
 
             if ($modeloUser->cadastrar($user)) {
@@ -97,19 +98,19 @@ class ControllerCadastro {
         $senha = $this->contexto->get('senha');
         $confirmaSenha = $this->contexto->get('confirmaSenha');
 
-        if ($senha == $confirmaSenha) {
+        if ($senha === $confirmaSenha) {
             $user = new Usuario();
             $user->setId($this->sessao->get('id'));
             $user->setNome($nome);
             $user->setSobrenome($sobrenome);
             $user->setUsername($username);
             $user->setSenha(md5($senha));
-
             if ($modeloUser->alterar($user)) {
                 echo '<script>location.href = "/principal"</script>';
             }
         } else {
             echo '<script>alert("Senhas não estão iguais!");</script>';
+            echo '<script>location.href = "/principal"</script>';
         }
     }
 

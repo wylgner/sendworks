@@ -2,6 +2,8 @@
   overflow: hidden;
   background-color: #333;
   font-family: Arial;
+  border: none;
+  
 }
 
 /* Links inside the navbar */

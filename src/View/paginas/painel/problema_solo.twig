@@ -1,10 +1,6 @@
 {% extends "templates/painel.twig"%}
 {% block head %}
-     <title>EZ CODE - Usuários</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" href="imagens/ez_icone.png">
-  
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -27,29 +23,30 @@
     </div>
 
     <div class="col-xs-8">
-
+        <a href="/problemas/adicionar" type="button" class="btn btn-success" style="margin-bottom: 0px"><i class="fas fa-plus"></i> Adicionar</a>
         <table class="table">
             <thead>
                 <tr>
                     <th style="width: 12%">#</th>
                     <th>ID</th>
-                    <th>Nome</th>
-                    <th>Sobrenome</th>
-                    <th>Username</th>
+                    <th>Título</th>
+                    <th>Entrada</th>
+                    <th>Saída</th>
+                    <th>Enunciado</th>
                 </tr>
             </thead>
             <tbody>
-                {% for usuario in usuarios %}
-                    <tr>
-                        <td><a href="usuarios/usuarios_edit/{{ usuario.id }}"><i class="fas fa-cogs"></i></a></td>
-                        <td>{{ usuario.id }}</td>
-                        <td>{{ usuario.nome }}</td>
-                        <td>{{ usuario.sobrenome }}</td>
-                        <td>{{ usuario.username }}</td>
+                {% for problema in problemas %}
+                    
+                        <td><a href="problemas/problemas_edit/{{ problema.id }}"><i class="fas fa-cogs"></i><span style="font-size: 10px; margin-left: 10px">Gerenciar</span></a></td>
+                        <td>{{ problema.id }}</td>
+                        <td>{{ problema.titulo }}</td>
+                        <td>{{ problema.entrada }}</td>
+                        <td>{{ problema.saida }}</td>
+                        <td>{{ problema.enunciado }}</td>
                     </tr>
                 {%endfor%} 
             </tbody>
         </table>
-        <a href="usuarios/usuarios_add" type="button" class="btn btn-success" style="margin-bottom: 20px"><i class="fas fa-plus"></i> Adicionar</a>
     </div>
 {% endblock %}

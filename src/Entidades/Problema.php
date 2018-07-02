@@ -16,13 +16,15 @@ class Problema {
     private $enunciado;
     private $id_usuario;
 
-    function __construct($id, $titulo, $entrada, $saida, $enunciado) {
+    function __construct($id, $titulo, $entrada, $saida, $enunciado, $id_usuario) {
+        $this->id = $id;
         $this->titulo = $titulo;
         $this->entrada = $entrada;
         $this->saida = $saida;
         $this->enunciado = $enunciado;
-        $this->id = $id;
+        $this->id_usuario = $id_usuario;
     }
+
     function getId() {
         return $this->id;
     }

@@ -1,0 +1,54 @@
+{% extends "templates/painel.twig"%}
+{% block head %}
+    <title>EZ CODE - Respostas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="imagens/ez_icone.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+{% endblock %}
+{% block conteudo %} 
+
+    <div class="col-xs-2">
+
+    </div>
+
+    <div class="col-xs-8">
+
+        <table class="table" style="text-overflow: ellipsis;">
+            <thead>
+                <tr>
+                    <th style="width: 12%">#</th>
+                    <th>ID</th>
+                    <th>Algoritmo</th>
+                    <th>Data</th>
+                    <th>ID Problema</th>
+                    <th>ID Usuário</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for resposta in respostas %}
+                    <tr>
+                        <td><a href="respostas/respostas_edit/{{ resposta.id }}"><i class="fas fa-edit"></i><span style="font-size: 10px; margin-left: 10px">Gerenciar</span></a></td>
+                        <td>{{ resposta.id }}</td>
+                        <td> <a target="_blank" href="/resposta/algoritmo/{{ resposta.id }}" type="button" class="btn " style="margin-top: -5px"><i class="fas fa-eye"></i> Ver</a></td>
+                        <td>{{ resposta.data | date("d-m-Y") }}</td>
+                        <td>{{ resposta.id_problema }}</td>
+                        <td>{{ resposta.id_usuario }}</td>
+                    </tr>
+                {%endfor%} 
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block rodape %}
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="/css/perfil.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/cadastro.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+{% endblock %}

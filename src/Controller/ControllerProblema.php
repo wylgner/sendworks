@@ -33,12 +33,29 @@ class ControllerProblema {
     }
 
     public function showProb() {
-        
+
+        return $this->response->setContent($this->twig->render('paginas/painel/problemas_add.twig'));
     }
 
     public function formProblemaAdd() {
 
-        return $this->response->setContent($this->twig->render('paginas/painel/problemas_add.twig'));
+        $modeloProb = new MProblema();
+
+        $titulo = $this->contexto->get('titulo');
+        $entrada = $this->contexto->get('entrada');
+        $saida = $this->contexto->get('saida');
+        $enunciado = $this->contexto->get('enunciado');
+        $id = 0;
+
+        if ($titulo != NULL && $entrada != NULL && $enunciado != NULL && $saida != NULL) {
+
+            $prob = new Problema($id, $titulo, $entrada, $saida, $enunciado, $this->sessao->get('id_usuario'));
+            if ($modeloProb->cadastrar($prob)) {
+                echo '<script>location.href = "/problemas"</script>';
+            }
+        } else {
+            echo '<script>alert("Preencha todos os dados!");</script>';
+        }
     }
 
     public function problemas_add() {
@@ -51,8 +68,8 @@ class ControllerProblema {
         $enunciado = $this->contexto->get('enunciado');
 
         // depois de validado
-
-        $prob = new Problema($titulo, $entrada, $saida, $enunciado, $this->sessao->get('id_usuario'));
+        $id = 0;
+        $prob = new Problema($id, $titulo, $entrada, $saida, $enunciado, $this->sessao->get('id_usuario'));
 
 
         $mProblema = new MProblema();
@@ -103,11 +120,11 @@ class ControllerProblema {
         $saida = $this->contexto->get('saida');
         $enunciado = $this->contexto->get('enunciado');
         if ($titulo != NULL && $entrada != NULL && $saida != NULL && $enunciado != NULL) {
-            $prob = new Problema($idUser, $titulo, $entrada, $saida, $enunciado);
+            $prob = new Problema($idUser, $titulo, $entrada, $saida, $enunciado, $this->sessao->get('id_usuario'));
 
 
             if ($modeloProb->alterar($prob)) {
-                echo '<script>location.href = "/problemas"</script>';
+               echo '<script>location.href = "/problemas"</script>';
             }
         } else {
             echo '<script>alert("Preencha todos os dados!");</script>';

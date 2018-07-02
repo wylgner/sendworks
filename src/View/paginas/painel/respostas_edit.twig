@@ -17,30 +17,19 @@
         </div>
         <div class="col-sm-4">
 
-            <form id="formPerfil" action="/formProblemasEdit" method="POST">
+            <form id="formResposta" action="/formRespostasEdit" method="POST">
                 <div class="form-group">
                     <label for="nome">ID</label>
-                    <input type="text" class="form-control" value="{{ problemas['id'] }}" disabled>
-                    <input type="hidden" class="form-control" name="idUser" value="{{ problemas['id'] }}">
+                    <input type="text" class="form-control" value="{{ resposta['id'] }}" disabled>
+                    <input type="hidden" class="form-control" name="idUser" value="{{ resposta['id'] }}">
                 </div>
                 <div class="form-group">
-                    <label for="titulo">Título</label>
-                    <input type="text" class="form-control" name="titulo" value="{{ problemas['titulo'] }}">
+                    <label for="titulo">Algoritmo</label>
+                    <input type="text" class="form-control" name="algoritmo" value="{{ resposta['algoritmo'] }}">
                 </div>
-                <div class="form-group">
-                    <label for="entrada">Entrada</label>
-                    <input type="text" class="form-control" name="entrada" value="{{ problemas['entrada'] }}">
-                </div>
-                <div class="form-group">
-                    <label for="saida">Saida</label>
-                    <input type="text" class="form-control" name="saida" value="{{ problemas['saida'] }}">
-                </div>
-                <div class="form-group">
-                    <label for="enunciado">Enunciado</label>
-                    <input type="text" class="form-control" name="enunciado" value="{{ problemas['enunciado'] }}">
-                </div>
+                
                 <button type="submit" class="btn btn-success col-sm-3">Submit</button>
-                <a href="/problemas/problemas_excluir/{{ problemas['id'] }}" class="btn btn-danger col-sm-3" style="margin-left: 30px">Excluir</a>
+                <a href="/respostas/respostas_excluir/{{ resposta['id'] }}" class="btn btn-danger col-sm-3" style="margin-left: 30px">Excluir</a>
             </form>
         </div>
     </div>

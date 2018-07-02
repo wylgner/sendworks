@@ -1,40 +1,27 @@
-{% extends "/paginas/painel/principal.twig"%}
+{% extends "/templates/login.twig"%}
 {% block head %}
     {{ parent() }}
     <link href="/css/cadastro.css" rel="stylesheet" type="text/css"/>
+     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" 
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" 
+    integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   
 {% endblock %}
 {% block menu %}
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span> 
-                </button>
-                <a class="navbar-brand" href="/logado">
-                    <img src="imagens/ez_icone.png" width="30" height="30" alt="">
-                </a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <li class=""><a href="#">Perfil</a></li>
-                    <li><a href="#">Problemas</a></li>
-                    <li><a href="#">Trabalhos</a></li>  
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-
-                    <li><a href="/logoff"><span class="glyphicon glyphicon-log-in"></span> Logoff</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+   
 {% endblock %}
 {% block conteudo %}
-
-    <div class="caixa col-12 col-sm-12 col-xl-10 col-lg-12 col-xs-8">
+    <div class="row">
+    <div class="caixa col-sm-8 offset-2">
         <div class="">
-            <form  class="form-group  center-block text-center" id="formCadastro" action="/cadastro" method="POST">
+            <form  class="form-group  " id="formCadastro" action="/formUsuariosAdd" method="POST">
 
                 <div class="">
                     <div class="input-group-prepend input-group col-12 col-sm-12 col-xl-12 col-lg-12 col-xs-12">
@@ -74,6 +61,7 @@
 
             </form>
         </div>
+    </div>
     </div>
 
 

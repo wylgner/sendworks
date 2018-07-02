@@ -1,10 +1,6 @@
 {% extends "templates/painel.twig"%}
 {% block head %}
-     <title>EZ CODE - Usuários</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" href="imagens/ez_icone.png">
-  
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -27,29 +23,22 @@
     </div>
 
     <div class="col-xs-8">
-
         <table class="table">
             <thead>
-                <tr>
                     <th style="width: 12%">#</th>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Sobrenome</th>
-                    <th>Username</th>
+                    <th>Algoritmo</th>
                 </tr>
             </thead>
             <tbody>
-                {% for usuario in usuarios %}
-                    <tr>
-                        <td><a href="usuarios/usuarios_edit/{{ usuario.id }}"><i class="fas fa-cogs"></i></a></td>
-                        <td>{{ usuario.id }}</td>
-                        <td>{{ usuario.nome }}</td>
-                        <td>{{ usuario.sobrenome }}</td>
-                        <td>{{ usuario.username }}</td>
+                {% for resposta in resposta %}
+                    <a href="respostas/"><i class="fas fa-comment"></i></a>
+                    <pre>   
+                    <td>{{ resposta.algoritmo }}</td>
+                    </pre>
                     </tr>
                 {%endfor%} 
             </tbody>
         </table>
-        <a href="usuarios/usuarios_add" type="button" class="btn btn-success" style="margin-bottom: 20px"><i class="fas fa-plus"></i> Adicionar</a>
+            <a href="/respostas" type="button" class="btn btn-success" style="margin-bottom: 0px"><i class="fas fa-arrow-left"></i> Voltar</a>
     </div>
 {% endblock %}

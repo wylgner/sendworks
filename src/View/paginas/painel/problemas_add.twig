@@ -1,6 +1,11 @@
 {% extends "templates/painel.twig"%}
 {% block head %}
+     <title>EZ CODE</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="imagens/ez_icone.png">
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -22,7 +27,7 @@
 
         </div>
         <div class="col-sm-4">
-            <form id="formProblema" action="/formProblemasAdd" method="POST">
+            <form id="formProblema" action="/problemas/problemas_add" method="POST">
                 <div class="form-group">
                     <label for="titulo">Título</label>
                     <input type="text" class="form-control" name="titulo">
