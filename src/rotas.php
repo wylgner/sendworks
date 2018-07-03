@@ -39,14 +39,15 @@ $rotas->add('problemas_adicionar_formulario', new Route('/problemas/problemas_ed
 $rotas->add('problemas_editar', new Route('/problemas/problemas_edit/{page}', array('_controller' => 'Sendworks\Controller\ControllerProblema', 'method' => 'problemas_edit', 'page' => 1)));
 $rotas->add('problemas_editar_formulario', new Route('/formProblemasEdit', array('_controller' => 'Sendworks\Controller\ControllerProblema', 'method' => 'formProblemasEdit')));
 $rotas->add('problemas_excluir', new Route('/problemas/problemas_excluir/{page}', array('_controller' => 'Sendworks\Controller\ControllerProblema', 'method' => 'problemas_excluir', 'page' => 1)));
-
+$rotas->add('problema_solo', new Route('/problemas/problema_solo/{page}', array('_controller' => 'Sendworks\Controller\ControllerProblema', 'method' => 'showProbSolo', 'page' => 1)));
 // Respostas
 $rotas->add('respostas', new Route('/respostas', array('_controller' => 'Sendworks\Controller\ControllerResposta', 'method' => 'show')));
 $rotas->add('respostas_add', new Route('/respostas/adicionar', array('_controller' => 'Sendworks\Controller\ControllerResposta', 'method' => 'showResp')));
-$rotas->add('respostas_adicionar', new Route('/respostas/respostas_add', array('_controller' => 'Sendworks\Controller\ControllerResposta', 'method' => 'formRespostaAdd')));
+$rotas->add('respostas_adicionar', new Route('/respostas/respostas_add', array('_controller' => 'Sendworks\Controller\ControllerResposta', 'method' => 'respostas_algoritmo')));
 $rotas->add('respostas_adicionar_formulario', new Route('/respostas/respostas_edit/{page}', array('_controller' => 'Sendworks\Controller\ControllerResposta', 'method' => 'resposta_edit', 'page' => 1)));
 $rotas->add('respostas_editar', new Route('/respostas/respostas_edit/{page}', array('_controller' => 'Sendworks\Controller\ControllerResposta', 'method' => 'resposta_edit', 'page' => 1)));
 $rotas->add('respostas_editar_formulario', new Route('/formRespostasEdit', array('_controller' => 'Sendworks\Controller\ControllerResposta', 'method' => 'formRespostaEdit')));
 $rotas->add('respostas_excluir', new Route('/respostas/respostas_excluir/{page}', array('_controller' => 'Sendworks\Controller\ControllerResposta', 'method' => 'respostas_excluir', 'page' => 1)));
-$rotas->add('respostas_algoritmo', new Route('/resposta/algoritmo/{page}', array('_controller' => 'Sendworks\Controller\ControllerResposta', 'method' => 'respostas_algoritmo', 'page' => 1)));
+$rotas->add('respostas_algoritmo', new Route('/resposta/algoritmo/{page}', array('_controller' => 'Sendworks\Controller\ControllerResposta', 'method' => 'algoritmo', 'page' => 1)));
+$rotas->add('respostas_adiciona', new Route('/respostas/respostas_add/{page}', array('_controller' => 'Sendworks\Controller\ControllerResposta', 'method' => 'respostas_algoritmo', 'page' => 1)));
 return $rotas;

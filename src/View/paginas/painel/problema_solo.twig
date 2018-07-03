@@ -1,6 +1,11 @@
 {% extends "templates/painel.twig"%}
 {% block head %}
+    <title>EZ CODE</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="imagens/ez_icone.png">
+    <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -14,39 +19,35 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="/css/perfil.css" rel="stylesheet" type="text/css"/>
     <link href="/css/cadastro.css" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 {% endblock %}
+
 {% block conteudo %} 
+    <div class="row">
+        <div class="col-xs-2">
 
-    <div class="col-xs-2">
+        </div>
+        <div class="col-sm-4">
+            <form id="formProblema" action="/respostas/respostas_add/{{problema.id}}" method="POST">
+                <div class="form-group">
+                    <label for="entrada">Enunciado: {{problema.enunciado}}</label>
+                </div>
+                <div class="form-group">
+                    <label for="entrada">Exemplo de entrada: {{problema.entrada}}</label>
+                </div>
+                <div class="form-group">
+                    <label for="entrada">Exemplo de saida: {{problema.saida}}</label>
+                </div>
 
-    </div>
-
-    <div class="col-xs-8">
-        <a href="/problemas/adicionar" type="button" class="btn btn-success" style="margin-bottom: 0px"><i class="fas fa-plus"></i> Adicionar</a>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th style="width: 12%">#</th>
-                    <th>ID</th>
-                    <th>Título</th>
-                    <th>Entrada</th>
-                    <th>Saída</th>
-                    <th>Enunciado</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for problema in problemas %}
+                <div class="form-group">
+                    <label for="algoritmo">Algoritmo</label>
                     
-                        <td><a href="problemas/problemas_edit/{{ problema.id }}"><i class="fas fa-cogs"></i><span style="font-size: 10px; margin-left: 10px">Gerenciar</span></a></td>
-                        <td>{{ problema.id }}</td>
-                        <td>{{ problema.titulo }}</td>
-                        <td>{{ problema.entrada }}</td>
-                        <td>{{ problema.saida }}</td>
-                        <td>{{ problema.enunciado }}</td>
-                    </tr>
-                {%endfor%} 
-            </tbody>
-        </table>
+                    <textarea type="text" class="form-control rounded-0" rows="10" name="algoritmo"></textarea>
+
+                </div>
+
+                <button type="submit" class="btn btn-success col-sm-3">Responder</button>
+            </form>
+        </div>
     </div>
+
 {% endblock %}

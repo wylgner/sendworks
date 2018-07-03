@@ -37,6 +37,17 @@ class ControllerProblema {
         return $this->response->setContent($this->twig->render('paginas/painel/problemas_add.twig'));
     }
 
+    public function showProbSolo() {
+        $uri_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $uri_segments = explode('/', $uri_path);
+        $idUser = $uri_segments[3];
+        $modeloProb = new MProblema();
+
+        $problemas = $modeloProb->getById($idUser);
+
+        return $this->response->setContent($this->twig->render('paginas/painel/problema_solo.twig', ['problema' => $problemas]));
+    }
+
     public function formProblemaAdd() {
 
         $modeloProb = new MProblema();
@@ -124,7 +135,7 @@ class ControllerProblema {
 
 
             if ($modeloProb->alterar($prob)) {
-               echo '<script>location.href = "/problemas"</script>';
+                echo '<script>location.href = "/problemas"</script>';
             }
         } else {
             echo '<script>alert("Preencha todos os dados!");</script>';

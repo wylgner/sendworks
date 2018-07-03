@@ -34,17 +34,37 @@ class ControllerResposta {
         return $this->response->setContent($this->twig->render('/paginas/painel/respostas.twig', ['respostas' => $respostas]));
     }
 
-    public function respostas_algoritmo() {
+    public function algoritmo() {
+
         $uri_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         $uri_segments = explode('/', $uri_path);
         $idProb = $uri_segments[3];
         $modeloProb = new MProblema();
         $modeloResposta = new MResposta();
-
         $respostas = $modeloResposta->getById($idProb);
         echo '<pre>';
         print_r($respostas['algoritmo']);
-       // return $this->response->setContent($this->twig->render('/paginas/painel/algoritmo.twig', ['respostas' => $respostas]));
+    }
+
+    public function respostas_algoritmo() {
+        $uri_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $uri_segments = explode('/', $uri_path);
+        $idProb = $uri_segments[3];
+        $idUser = $this->sessao->get('id');
+        $algoritmo = $this->contexto->get('algoritmo');
+        $data = date_create();
+        $modeloProb = new MProblema();
+        $resp = new Resposta();
+        $resp->setAlgoritmo($algoritmo);
+        $resp->setData($data->format('Y-m-d'));
+        $resp->setId_problema($idProb);
+        $resp->setId_usuario($idUser);
+        $resposta = new MResposta();
+        $resposta->cadastrar($resp);
+        $modeloResposta = new MResposta();
+
+        $respostas = $modeloResposta->listarRespostas();
+        return $this->response->setContent($this->twig->render('/paginas/painel/respostas.twig', ['respostas' => $respostas]));
     }
 
     public function showResp() {
@@ -96,16 +116,16 @@ class ControllerResposta {
         $idUser = $this->contexto->get('idUser');
         $algoritmo = $this->contexto->get('algoritmo');
         $data = date_create();
-      
+
         if ($algoritmo != NULL) {
             $resp = new Resposta();
             $resp->setAlgoritmo($algoritmo);
             $resp->setId($idUser);
             $resp->setData($data->format('Y-m-d'));
-           
-            
+
+
             if ($modeloResp->alterar($resp)) {
-               echo '<script>location.href = "/respostas"</script>';
+                echo '<script>location.href = "/respostas"</script>';
             }
         } else {
             echo '<script>alert("Preencha todos os dados!");</script>';
